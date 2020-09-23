@@ -1,20 +1,6 @@
 import styled from "styled-components";
 
-export const Homepage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 80px;
-`;
-
-export const DirectoryMenu = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-export const MenuItem = styled.div`
+export const StyledMenuItem = styled.div`
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;
@@ -23,6 +9,10 @@ export const MenuItem = styled.div`
   justify-content: center;
   border: 1px solid black;
   margin: 0 7.5px 15px;
+  background: ${(props) => `url(${props.imageUrl})`};
+  background-position: center;
+  background-size: cover;
+  ${(props) => props.size && `height: 380px`};
 
   &:first-child {
     margin-right: 7.5px;
@@ -41,6 +31,8 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  background: white;
+  cursor: pointer;
 `;
 
 export const Title = styled.h1`
