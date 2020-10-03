@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import { SignInWrapper } from "./styles";
+import { SignInWrapper, Buttons } from "./styles";
 import FormInput from "../FormInput/index";
 import CustomButton from "../CustomButton";
+
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 const SignIn = () => {
   const [credential, setCredential] = useState({ email: "", passowrd: "" });
@@ -39,7 +41,12 @@ const SignIn = () => {
           label="Password"
           handleChange={handleChange}
         />
-        <CustomButton type="submit">Sign in</CustomButton>
+        <Buttons>
+          <CustomButton type="submit">Sign</CustomButton>
+          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            Sign in with Google
+          </CustomButton>
+        </Buttons>
       </form>
     </SignInWrapper>
   );
