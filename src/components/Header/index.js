@@ -16,6 +16,7 @@ const Header = ({ currentUser }) => {
       <Options>
         <Option to="/shop">Shop</Option>
         <Option to="/contact">Contact</Option>
+        {console.log("current:", currentUser)}
         {currentUser ? (
           <Option onClick={() => auth.signOut()}>Sign out</Option>
         ) : (

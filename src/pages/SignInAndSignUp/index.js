@@ -1,12 +1,15 @@
 import React from "react";
 
 import SignIn from "../../components/SignIn/index";
+import SignUp from "../../components/SignUp/index";
+import { SignInAndSignUpWrapper } from "./styles";
 
 const SignInAndSignUpPage = () => {
   return (
-    <div>
+    <SignInAndSignUpWrapper>
       <SignIn />
-    </div>
+      <SignUp />
+    </SignInAndSignUpWrapper>
   );
 };
 
