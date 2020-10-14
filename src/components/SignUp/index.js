@@ -26,7 +26,6 @@ const SignUp = () => {
         email,
         password
       );
-      console.log("setCre", credential);
       await createUserProfileDocument(user, { displayName });
       setCredential({
         displayName: "",
@@ -66,6 +65,7 @@ const SignUp = () => {
           label="email"
           required
         />
+
         <FormInput
           type="password"
           name="password"
@@ -74,6 +74,7 @@ const SignUp = () => {
           label="password"
           required
         />
+
         <FormInput
           type="password"
           name="confirmPassword"

@@ -4,19 +4,26 @@ import { SignInWrapper, Buttons } from "./styles";
 import FormInput from "../FormInput/index";
 import CustomButton from "../CustomButton";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 
 const SignIn = () => {
-  const [credential, setCredential] = useState({ email: "", passowrd: "" });
+  const [credential, setCredential] = useState({ email: "", password: "" });
 
-  const handleSubmit = (event) => {
+  const { email, password } = credential;
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setCredential({ email: "", passowrd: "" });
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setCredential({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (event) => {
-    const { value, name } = event;
-    setCredential({ [name]: value });
+    const { value, name } = event.target;
+    setCredential({ ...credential, [name]: value });
   };
 
   return (
