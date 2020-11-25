@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { HeaderWrapper, LogoContainer, Option, Options } from "./styles";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../CartIcon/index";
+import CartDropdown from "../CartDropdown/index";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   return (
     <HeaderWrapper>
       <LogoContainer>
@@ -23,13 +25,16 @@ const Header = ({ currentUser }) => {
         ) : (
           <Option>Sign in</Option>
         )}
+        <CartIcon />
       </Options>
+      {hidden && <CartDropdown />}
     </HeaderWrapper>
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden,
 });
 
 export default connect(mapStateToProps)(Header);
